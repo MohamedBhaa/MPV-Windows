@@ -3,7 +3,7 @@
 --=============================================================================
 --          This script uses Subliminal to download subtitles,
 --          so make sure to specify your system's Subliminal location below:
-local subliminal = 'C:\\Users\\MHMD\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\Scripts\\subliminal.exe'
+local subliminal = 'C:\\Users\\Bhaa\\subliminal\\Scripts\\subliminal.exe'
 --=============================================================================
 -->>    SUBTITLE LANGUAGE:
 --=============================================================================
@@ -72,6 +72,9 @@ function download_subs(language)
         log('No Language found\n')
         return false
     end
+
+    -- Ensure the .sub directory exists (Windows command)
+    utils.subprocess({args = {"cmd", "/c", "mkdir", directory .. '\\Subtitles'}})
             
     log('Searching ' .. language[1] .. ' subtitles ...', 30)
 
@@ -101,7 +104,7 @@ function download_subs(language)
     a[#a + 1] = '-l'
     a[#a + 1] = language[2]
     a[#a + 1] = '-d'
-    a[#a + 1] = directory
+    a[#a + 1] = directory .. '\\Subtitles'
     a[#a + 1] = filename --> Subliminal command ends with the movie filename.
 
     local result = utils.subprocess(table)
