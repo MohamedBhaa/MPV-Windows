@@ -3,7 +3,7 @@
 --=============================================================================
 --          This script uses Subliminal to download subtitles,
 --          so make sure to specify your system's Subliminal location below:
-local subliminal = 'C:\\Users\\Bhaa\\subliminal\\Scripts\\subliminal.exe'
+local subliminal = '/home/mohamed/.config/mpv/subliminal/bin/subliminal'
 --=============================================================================
 -->>    SUBTITLE LANGUAGE:
 --=============================================================================
@@ -73,9 +73,9 @@ function download_subs(language)
         return false
     end
 
-    -- Ensure the .sub directory exists (Windows command)
+    -- Ensure the Subtitles directory exists (Windows command)
     utils.subprocess({args = {"cmd", "/c", "mkdir", directory .. '\\Subtitles'}})
-            
+
     log('Searching ' .. language[1] .. ' subtitles ...', 30)
 
     -- Build the `subliminal` command, starting with the executable:
