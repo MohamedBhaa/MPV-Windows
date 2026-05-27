@@ -36,7 +36,7 @@ local languages = {
 local logins = {
 --          { '--addic7ed', 'USERNAME', 'PASSWORD' },
 --          { '--legendastv', 'USERNAME', 'PASSWORD' },
---          { '--opensubtitles', 'USERNAME', 'PASSWORD' },
+          { '--opensubtitles', 'MohamedBhaa', 'Mo@123.123' },
 --          { '--subscenter', 'USERNAME', 'PASSWORD' },
 }
 --=============================================================================
@@ -53,7 +53,7 @@ local excludes = {
     -- will be excluded from auto-downloading subtitles.
     -- Full paths are also allowed, e.g.:
     -- '/home/david/Videos',
-    'no-subs-dl',
+    -- 'no-subs-dl',
 }
 local includes = {
     -- If anything is defined here, only the movies with a path
@@ -74,7 +74,7 @@ function download_subs(language)
     end
 
     -- Ensure the Subtitles directory exists (Windows command)
-    utils.subprocess({args = {"cmd", "/c", "mkdir", directory .. '\\Subtitles'}})
+    -- utils.subprocess({args = {"cmd", "/c", "mkdir", directory .. '\\Subtitles'}})
 
     log('Searching ' .. language[1] .. ' subtitles ...', 30)
 
@@ -104,7 +104,7 @@ function download_subs(language)
     a[#a + 1] = '-l'
     a[#a + 1] = language[2]
     a[#a + 1] = '-d'
-    a[#a + 1] = directory .. '\\Subtitles'
+    a[#a + 1] = directory  -- .. '\\Subtitles'
     a[#a + 1] = filename --> Subliminal command ends with the movie filename.
 
     local result = utils.subprocess(table)
